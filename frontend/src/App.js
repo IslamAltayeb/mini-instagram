@@ -1,9 +1,22 @@
+import Login from "./Pages/Login";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import HomePage from "./Pages/HomePage";
+import Question from "./Pages/Question";
+import AddQuestion from "./Pages/AddQuestion";
+
 
 function App() {
   return (
-    <div className="App">
-      impact week
-    </div>
+      <BrowserRouter>
+          <div className="App">
+              <Routes>
+                  <Route path='/' element={<Login />}/>
+                  <Route path='/homePage' element={<HomePage />}/>
+                  <Route path='/question/:id' element={<Question />}/>
+                  <Route path='/add-question' element={<AddQuestion />}/>
+              </Routes>
+          </div>
+      </BrowserRouter>
   );
 }
 
