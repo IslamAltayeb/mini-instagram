@@ -10,7 +10,7 @@ const homePage = (request, response) => {
         .sort({ created_at: '-1' })
         .populate('user')
         .then(question=>{
-            response.render('homePage', {
+            response.send({
                 error: null,
                 question: question,
             })
@@ -21,39 +21,37 @@ const homePage = (request, response) => {
 }
 
 const startPage = (request, response) => {
-    response.render('index',{
+    response.send('index',{
         error: null,
     })
 }
 
 const loginPage = (req, res)=> {
-    res.render('index',{
-        error: ''
-    })
+    res.status(200).send("/homePage")
 }
 
 const logIn = async (req, res) => {
     if (!req.body.email || !req.body.password) {
-        res.render('index',{
+        console.log(req.body)
+        res.send({
             error: 'email and password are required'
         })
     }else{
         let user = await userModel.findOne({email : req.body.email});
         if (!user) {
-            res.render('index',{
+            res.send({
                 error: 'user is not exist, please sign up first!'
             })
         }else{
             let correctPass = await bcrypt.compareSync(req.body.password, user.password)
             if (!correctPass) {
-                res.render('index',{
+                res.send({
                     error: 'password is not correct'
                 })
             } else{
                 let newToken = await jwt.sign({user}, 'user token')
                 res.cookie('jwt', newToken, { httpOnly: true })
-                res.redirect(`/`)
-                // res.redirect(`/homepage/${user._id}`)
+                res.send('/homePage')
             }
         }
     }
@@ -63,12 +61,12 @@ const logIn = async (req, res) => {
 const signUp = async (request, response) => {
     let existUser = await userModel.findOne({email: request.body.email})
     if (existUser){
-        response.render('index', {
+        response.send({
             error: 'This email is already in use!'
         })
     } else {
         if (!request.body.email || !request.body.password){
-            response.render('index', {
+            response.send({
                 error: 'email and password are required'
             })
         } else {
@@ -82,7 +80,7 @@ const signUp = async (request, response) => {
                 .then ( async () => {
                     let newToken = await jwt.sign({user}, 'user token')
                     response.cookie('jwt', newToken, { httpOnly: true })
-                    response.redirect(`/`)
+                    response.send(`/homePage`)
                 })
                 .catch ( error => {
                     throw error
@@ -97,7 +95,7 @@ const logOut = (request, response) => {
 }
 
 const addNew = (req,res) =>{
-    res.render('addQuestion', {
+    res.send({
         user : req.params.id
     })
 };
@@ -106,31 +104,11 @@ const addQuestion = (request, response) => {
     let newQuestion = new questionModel(request.body);
             newQuestion.save()
                 .then(() => {
-                    // homePage(request, response)
                     response.redirect('/')
                 })
                 .catch(error => {
                     console.log(error)
                 })
-    // userModel.findById(request.params.id)
-    //     .then(result=>{
-    //         let questionObj ={
-    //             ...request.body,
-    //             user: request.params.id
-    //         }
-    //         let newQuestion = new questionModel(questionObj);
-    //         newQuestion.save()
-    //             .then(() => {
-    //                 console.log(request)
-    //                 homePage(request, response)
-    //             })
-    //             .catch(error => {
-    //                 console.log(error)
-    //             })
-    //     })
-    //     .catch(error => {
-    //         console.log(error)
-    //     })
 }
 
 const commentPage = (req, res) => {
@@ -139,7 +117,7 @@ const commentPage = (req, res) => {
         .then(result => {
             commentModel.find({question: result._id })                
                 .then( ( comments ) => {
-                    res.render('comment' , {
+                    res.send({
                         question: result,  
                         comments: comments         
                     }) 
