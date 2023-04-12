@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import  {Link} from "react-router-dom";
 import axios from "axios";
+import Header from "./Header";
+import Footer from "./Footer";
 
 export default function Login(){
     const [userName, setUserName] = useState();
@@ -59,22 +61,22 @@ export default function Login(){
     return(
 
         <>
+            <Header />
             <form onSubmit={loginSubmit}>
                 <input type="email" name="email" id="email" onChange={userEmailChange}/>
                 <input type="password" name="password" id="password" onChange={userPasswordChange}/>
-                {userEmail && userPassword ? < button onClick={loginSubmit}><Link to={path}>Login</Link></button> : null
-                }
+                {userEmail && userPassword ? < button onClick={loginSubmit}><Link to={path}>Login</Link></button> : null}
             </form>
             <form onSubmit={signUpSubmit}>
                 <input type="text" name="userName" id="userName" onChange={userNameChange}/>
                 <input type="email" name="email" id="email" onChange={userEmailChange}/>
                 <input type="password" name="password" id="password" onChange={userPasswordChange}/>
-                {userEmail && userPassword && userName ? < button onClick={signUpSubmit}><Link to={path}>Sign Up</Link></button> : null
-                }
+                {userEmail && userPassword && userName ? < button onClick={signUpSubmit}><Link to={path}>Sign Up</Link></button> : null}
             </form>
             {
                 err ? <h5>{err}</h5> : null
             }
+            <Footer />
         </>
     )
 }

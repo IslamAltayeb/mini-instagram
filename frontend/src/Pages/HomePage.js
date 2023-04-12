@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 import  {Link} from "react-router-dom";
 import axios from "axios";
+import Header from "./Header";
+import Footer from "./Footer";
 
 export default function HomePage(){
     const [questions, setQuestions] = useState([])
@@ -15,10 +17,11 @@ export default function HomePage(){
     }, [])
     return(
         <>
+             <Header />
             <div>
                 <Link to={`/add-question`}>Add new</Link>
             </div>
-            Home
+            
             {questions && questions.map(question =>{
                 return(
                     <div key={question._id}>
@@ -28,6 +31,7 @@ export default function HomePage(){
                     </div>
                 )
             })}
+             <Footer />
         </>
     )
 }
