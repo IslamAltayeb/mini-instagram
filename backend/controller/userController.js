@@ -51,7 +51,7 @@ const logIn = async (req, res) => {
             } else{
                 let newToken = await jwt.sign({user}, 'user token')
                 res.cookie('jwt', newToken, { httpOnly: true })
-                res.send('/homePage')
+                res.send(`/homePage/${user._id}`)
             }
         }
     }
@@ -80,7 +80,7 @@ const signUp = async (request, response) => {
                 .then ( async () => {
                     let newToken = await jwt.sign({user}, 'user token')
                     response.cookie('jwt', newToken, { httpOnly: true })
-                    response.send(`/homePage`)
+                    response.send(`/homePage/${user._id}`)
                 })
                 .catch ( error => {
                     throw error
@@ -104,7 +104,7 @@ const addQuestion = (request, response) => {
     let newQuestion = new questionModel(request.body);
             newQuestion.save()
                 .then(() => {
-                    response.redirect('/')
+                    response.send(`/homePage/${request.params.id}`)
                 })
                 .catch(error => {
                     console.log(error)
@@ -115,6 +115,7 @@ const commentPage = (req, res) => {
     questionModel.findById(req.params.id)
     .populate('user')
         .then(result => {
+            console.log(req)
             commentModel.find({question: result._id })                
                 .then( ( comments ) => {
                     res.send({
@@ -131,7 +132,7 @@ const commentPage = (req, res) => {
 const deleteQuestion = (req, res) => {
     questionModel.findByIdAndDelete(req.params.id)
     .then(()=> {
-        res.redirect('/')
+        res.send('/homePage')
     })
     .catch(err =>{ console.log(err)});    
 }

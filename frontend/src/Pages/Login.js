@@ -48,7 +48,6 @@ export default function Login(){
                 password: userPassword
             })
                 .then(result =>{
-                    localStorage.setItem('email', userEmail)
                     setPath(result.data)
                 })
                 .catch(err =>{
@@ -57,18 +56,17 @@ export default function Login(){
         }
     }
     return(
-
         <>
             <form onSubmit={loginSubmit}>
-                <input type="email" name="email" id="email" onChange={userEmailChange}/>
-                <input type="password" name="password" id="password" onChange={userPasswordChange}/>
+                <input type="email" name="email" onChange={userEmailChange}/>
+                <input type="password" name="password" onChange={userPasswordChange}/>
                 {userEmail && userPassword ? < button onClick={loginSubmit}><Link to={path}>Login</Link></button> : null
                 }
             </form>
             <form onSubmit={signUpSubmit}>
-                <input type="text" name="userName" id="userName" onChange={userNameChange}/>
-                <input type="email" name="email" id="email" onChange={userEmailChange}/>
-                <input type="password" name="password" id="password" onChange={userPasswordChange}/>
+                <input type="text" name="userName" onChange={userNameChange}/>
+                <input type="email" name="email" onChange={userEmailChange}/>
+                <input type="password" name="password" onChange={userPasswordChange}/>
                 {userEmail && userPassword && userName ? < button onClick={signUpSubmit}><Link to={path}>Sign Up</Link></button> : null
                 }
             </form>
