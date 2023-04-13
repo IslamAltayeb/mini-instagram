@@ -9,6 +9,7 @@ export default function AddQuestion(){
     const [path, setPath] = useState('');
     const [err, setErr] = useState('');
     const [user, setUser] = useState();
+    const userId = localStorage.getItem("userId")
 
     const titleChange = (e) =>{
         setTitle(e.target.value)
@@ -48,7 +49,7 @@ export default function AddQuestion(){
     return(
         <>
             <form onSubmit={handleSubmit}>
-                <input type="hidden" name="user" value={user}/>
+                <input type="hidden" name="user" value={userId}/>
                 <input type="text" name="title" id="title" placeholder="Write question here..." onChange={titleChange}/>
                 <br/>
                 <textarea name="description" id="description" placeholder="Write your description here..." onChange={descriptionChange}></textarea>

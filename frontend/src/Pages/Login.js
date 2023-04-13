@@ -29,7 +29,9 @@ export default function Login(){
                 password: userPassword
             })
                 .then(result =>{
-                    setPath(result.data)
+                    console.log(result.data.user)
+                    localStorage.setItem("userId", `${result.data.user}`)
+                    setPath(result.data.path)
                 })
                 .catch(err =>{
                     console.log(err)
