@@ -157,8 +157,8 @@ const editQuestion =(req, res) =>{
 
 const updateQuestion = (req, res) =>{
     questionModel.findByIdAndUpdate(req.params.id, req.body)
-        .then(result => {
-            res.redirect(`/question/${req.params.id}`)
+        .then(() => {
+            res.send(`/question/${req.params.id}`)
         })
         .catch(err => console.log(err))
 }

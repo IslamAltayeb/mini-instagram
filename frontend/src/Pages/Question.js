@@ -10,6 +10,8 @@ export default function Question(){
     const [question, setQuestion] = useState([]);
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState('');
+    const [title, setTitle] = useState();
+    const [description, setDescription] = useState();
     const [err, setErr] = useState('');
     const [path, setPath] = useState('');
     const [questionUserId, setQuestionUserId] = useState('');
@@ -26,9 +28,32 @@ export default function Question(){
                 console.log(err)
             })
     },[])
-
+    const titleChange = (e) =>{
+        setTitle(e.target.value)
+    }
+    const descriptionChange = (e) =>{
+        setDescription(e.target.value)
+    }
     const commentChange = (e) =>{
         setNewComment(e.target.value)
+    }
+    const handleSubmit = (e) =>{
+        e.preventDefault()
+        setErr('')
+        if (title === '' && description === ''){
+            setErr("Field is required")
+        } else{
+            axios.post(`/update-question/${id}`,{
+                title: title,
+                description: description,
+            })
+                .then(result =>{
+                    setPath(result.data)
+                })
+                .catch(err =>{
+                    console.log(err)
+                })
+        }
     }
     const commentSubmit = () =>{
         setErr('')
@@ -57,6 +82,14 @@ export default function Question(){
                 console.log(err)
             })
     }
+    const edit = () =>{
+        let element = document.getElementById("popUp");
+        let currentClass = element.className;
+        if (currentClass) {
+            element.classList.remove(currentClass);
+        }
+        element.classList.add("visible");
+    }
 
     return(
         <div>
@@ -65,7 +98,21 @@ export default function Question(){
             {
                 userId === questionUserId ? <form onSubmit={deleteQuestion}>
                     <Link to={path}><button onClick={deleteQuestion}>Delete</button></Link>
-                </form> : null
+                </form>: null
+            }
+            {
+                userId === questionUserId ? <div onClick={edit}>Edit
+                    <div id="popUp" className="hidden">
+                        <form onSubmit={handleSubmit}>
+                            <div>
+                                <input type="text" name="title" value={question.title} onChange={titleChange}/>
+                                <br/>
+                                    <textarea name="description" onChange={descriptionChange}></textarea>
+                            </div>
+
+                            <button onClick={handleSubmit}>Submit</button>
+                        </form></div>
+                </div>: null
             }
 
 
