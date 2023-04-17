@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import  {Link} from "react-router-dom";
 import axios from "axios";
+import "../Style/Login.css"
 
 export default function Login(){
     const [userName, setUserName] = useState();
@@ -58,24 +59,27 @@ export default function Login(){
         }
     }
     return(
-        <>
-            <form onSubmit={loginSubmit}>
-                <input type="email" name="email" onChange={userEmailChange}/>
-                <input type="password" name="password" onChange={userPasswordChange}/>
-                {userEmail && userPassword ? < button onClick={loginSubmit}><Link to={path}>Login</Link></button> : null
+        <div className="login container">
+            <h1>Matrix Master Community</h1>
+            <form onSubmit={loginSubmit} className="login-form">
+                <h2>Log In</h2>
+                <input type="email" name="email" placeholder="Email..." onChange={userEmailChange}/>
+                <input type="password" name="password" placeholder="Password..." onChange={userPasswordChange}/>
+                {userEmail && userPassword ? < button onClick={loginSubmit} className="button-login"><Link to={path}>Login</Link></button> : null
                 }
             </form>
-            <form onSubmit={signUpSubmit}>
-                <input type="text" name="userName" onChange={userNameChange}/>
-                <input type="email" name="email" onChange={userEmailChange}/>
-                <input type="password" name="password" onChange={userPasswordChange}/>
-                {userEmail && userPassword && userName ? < button onClick={signUpSubmit}><Link to={path}>Sign Up</Link></button> : null
+            <form onSubmit={signUpSubmit} className="signup-form">
+                <h2>Sign Up</h2>
+                <input type="text" name="userName" placeholder="Username..." onChange={userNameChange}/>
+                <input type="email" name="email" placeholder="Email..." onChange={userEmailChange}/>
+                <input type="password" name="password" placeholder="Password..." onChange={userPasswordChange}/>
+                {userEmail && userPassword && userName ? < button onClick={signUpSubmit} className="button-login"><Link to={path}>Sign Up</Link></button> : null
                 }
             </form>
             {
                 err ? <h5>{err}</h5> : null
             }
-        </>
+        </div>
     )
 }
 
