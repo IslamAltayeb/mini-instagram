@@ -1,0 +1,98 @@
+.question{
+    gap: 10px;
+    padding: 50px 20px;
+}
+.question h2{
+    font-size: 25px;
+    font-weight: 400;
+    width: 200px;
+}
+.buttons{
+    margin-top: 50px;
+    gap: 20px;
+    justify-content: flex-end;
+}
+.icon-question{
+    --ggs: 2;
+}
+.button{
+    font-family: 'Herculanum', serif;
+    text-decoration: underline;
+}
+.submit{
+    color: white;
+    font-size: 20px;
+    border: 1px solid #ededed;
+    border-radius: 15px;
+    max-width: 150px;
+    background-color: #7ab3f4;
+    padding: 1px 5px;
+    width: 250px;
+}
+.button:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}
+.title{
+    justify-content: flex-start;
+}
+.description{
+    justify-content: flex-start;
+}
+.description h3{
+    display: flex;
+    align-items: center;
+}
+#popUp form{
+    gap: 5px;
+}
+#popUp input{
+    background-color: #fafafa;
+    border: 1px solid #ededed;
+    font-size: 20px;
+    padding: 5px;
+    height: 50px;
+    width: 300px;
+}
+#popUp textarea{
+    background-color: #fafafa;
+    border: 1px solid #ededed;
+    padding: 5px;
+    height: 200px;
+    width: 500px;
+}
+.comment-area{
+    width: 700px;
+    margin: auto;
+}
+.comment-area form{
+    gap: 10px;
+}
+.comment-area textarea{
+    background-color: #fafafa;
+    border: 1px solid #ededed;
+    border-radius: 15px;
+    padding: 5px 10px;
+    height: 50px;
+    width: 90%;
+}
+.commentButton{
+    height: 30px;
+    background-color: #7ab3f4;
+}
+.comment{
+    justify-content: space-between;
+}
+.oneComment{
+    justify-content: space-between;
+    font-size: 20px;
+    margin: 20px;
+}
+.oneComment h5{
+    text-align: right;
+    font-weight: 400;
+    color: black;
+}
+.close-icon{
+    align-self: flex-end;
+}

@@ -1,4 +1,7 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700;800&display=swap');
 *{
+    font-family: 'Mukta', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -22,4 +25,25 @@
     background-color: yellow;
     padding: 20px;
     border: 3px solid black;
+}
+.error{
+    color: black;
+    background-color: red;
+    padding: 10px;
+    border: 1px solid black;
+}
+.flex-row{
+    display: flex;
+    flex-direction: row;
+}
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}
+.icon{
+    align-self: center;
+}
+.icon:hover{
+    cursor: pointer;
+    transform: scale(1.3);
 }

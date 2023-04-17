@@ -1,15 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700;800&display=swap');
-*{
-    font-family: 'Mukta', sans-serif;
-}
+
 h2{
     align-self: flex-start;
     font-size: 30px;
-}
-.button-login a{
-    font-size: 20px;
-    text-decoration: none;
-    color: white;
 }
 .login{
     padding: 50px 20px;
@@ -26,14 +18,14 @@ h2{
     grid-area: title;
     margin-bottom: 100px;
 }
-form{
+.login form{
     padding: 20px;
     align-items: center;
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
-input{
+.login input{
     background-color: #fafafa;
     border: 1px solid #ededed;
     font-size: 15px;
@@ -51,14 +43,16 @@ input{
     grid-area: signup;
 }
 .button-login{
+    color: white;
+    font-size: 20px;
     border: 1px solid #ededed;
     border-radius: 15px;
     max-width: 150px;
     background-color: #7ab3f4;
     padding: 1px 5px;
     width: 250px;
-    font-family: 'Mukta', sans-serif;
 }
 .button-login:hover{
+    cursor: pointer;
     background-color: #5fa5f3;
 }
