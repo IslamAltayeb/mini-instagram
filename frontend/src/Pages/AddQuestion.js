@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import {useParams} from "react-router-dom";
+import {useParams, Link} from "react-router-dom";
 
 export default function AddQuestion(){
     let {id} = useParams()
@@ -9,6 +9,7 @@ export default function AddQuestion(){
     const [path, setPath] = useState('');
     const [err, setErr] = useState('');
     const [user, setUser] = useState();
+    const userId = localStorage.getItem("userId")
 
     const titleChange = (e) =>{
         setTitle(e.target.value)
@@ -19,8 +20,7 @@ export default function AddQuestion(){
     useEffect(()=>{
         axios.get(`/addQuestion/${id}`)
             .then(result =>{
-                console.log(id)
-                setUser(result.data)
+                setUser(result.data.user)
             })
             .catch(err =>{
                 console.log(err)
@@ -35,7 +35,8 @@ export default function AddQuestion(){
         } else{
             axios.post(`/add-new/${id}`,{
                 title: title,
-                description: description
+                description: description,
+                user: user
             })
                 .then(result =>{
                     setPath(result.data)
@@ -47,13 +48,13 @@ export default function AddQuestion(){
     }
     return(
         <>
-            <form action="/add-new/<%=user%>" method="post" onSubmit={handleSubmit}>
-                <input type="hidden" name="user" value="<%=user%>"/>
+            <form onSubmit={handleSubmit}>
+                <input type="hidden" name="user" value={userId}/>
                 <input type="text" name="title" id="title" placeholder="Write question here..." onChange={titleChange}/>
                 <br/>
                 <textarea name="description" id="description" placeholder="Write your description here..." onChange={descriptionChange}></textarea>
                 <br/>
-                <button onClick={handleSubmit}>Add</button>
+                <button onClick={handleSubmit}><Link to={path}>Add</Link></button>
             </form>
             {
                 err ? <h5>{err}</h5> : null

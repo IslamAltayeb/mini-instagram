@@ -32,7 +32,6 @@ const loginPage = (req, res)=> {
 
 const logIn = async (req, res) => {
     if (!req.body.email || !req.body.password) {
-        console.log(req.body)
         res.send({
             error: 'email and password are required'
         })
@@ -51,7 +50,7 @@ const logIn = async (req, res) => {
             } else{
                 let newToken = await jwt.sign({user}, 'user token')
                 res.cookie('jwt', newToken, { httpOnly: true })
-                res.send('/homePage')
+                res.send({"path": `/homePage`, "user": `${user._id}`})
             }
         }
     }
@@ -80,7 +79,7 @@ const signUp = async (request, response) => {
                 .then ( async () => {
                     let newToken = await jwt.sign({user}, 'user token')
                     response.cookie('jwt', newToken, { httpOnly: true })
-                    response.send(`/homePage`)
+                    response.send({"path": `/homePage`, "user": `${user}`})
                 })
                 .catch ( error => {
                     throw error
@@ -104,7 +103,7 @@ const addQuestion = (request, response) => {
     let newQuestion = new questionModel(request.body);
             newQuestion.save()
                 .then(() => {
-                    response.redirect('/')
+                    response.send(`/homePage`)
                 })
                 .catch(error => {
                     console.log(error)
@@ -115,7 +114,7 @@ const commentPage = (req, res) => {
     questionModel.findById(req.params.id)
     .populate('user')
         .then(result => {
-            commentModel.find({question: result._id })                
+            commentModel.find({question: result._id })
                 .then( ( comments ) => {
                     res.send({
                         question: result,  
@@ -131,7 +130,7 @@ const commentPage = (req, res) => {
 const deleteQuestion = (req, res) => {
     questionModel.findByIdAndDelete(req.params.id)
     .then(()=> {
-        res.redirect('/')
+        res.send('/homePage')
     })
     .catch(err =>{ console.log(err)});    
 }
@@ -140,8 +139,7 @@ const deleteComment = (req, res) =>{
     commentModel.findByIdAndDelete(req.params.id)  
         .populate('question')
         .then(result => {
-            console.log(result)
-            res.redirect(`/question/${result.question._id}`)
+            res.send(`/question/${result.question._id}`)
     })
     .catch(err =>{ console.log(err)}); 
 }
@@ -159,8 +157,8 @@ const editQuestion =(req, res) =>{
 
 const updateQuestion = (req, res) =>{
     questionModel.findByIdAndUpdate(req.params.id, req.body)
-        .then(result => {
-            res.redirect(`/question/${req.params.id}`)
+        .then(() => {
+            res.send(`/question/${req.params.id}`)
         })
         .catch(err => console.log(err))
 }
@@ -183,7 +181,7 @@ const addComment = (req, res) => {
     let newComment = new commentModel(commentObj);
     newComment.save()
         .then(() => {
-            res.redirect(`/question/${questionId}`)
+            res.send(`/question/${questionId}`)
         })
         .catch(error => {
             console.log(error)
