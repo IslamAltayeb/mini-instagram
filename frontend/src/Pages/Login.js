@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import  {Link} from "react-router-dom";
 import axios from "axios";
+import Header from "./Header";
+import Footer from "./Footer";
 
 export default function Login(){
     const [userName, setUserName] = useState();
@@ -59,6 +61,7 @@ export default function Login(){
     }
     return(
         <>
+            <Header />
             <form onSubmit={loginSubmit}>
                 <input type="email" name="email" onChange={userEmailChange}/>
                 <input type="password" name="password" onChange={userPasswordChange}/>
@@ -75,6 +78,7 @@ export default function Login(){
             {
                 err ? <h5>{err}</h5> : null
             }
+            <Footer />
         </>
     )
 }
