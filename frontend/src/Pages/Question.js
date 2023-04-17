@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import React from "react";
 import DeleteComment from "../Components/DeleteComment";
+import User from "../Components/User";
 
 
 export default function Question(){
@@ -28,6 +29,7 @@ export default function Question(){
                 console.log(err)
             })
     },[])
+
     const titleChange = (e) =>{
         setTitle(e.target.value)
     }
@@ -93,6 +95,8 @@ export default function Question(){
 
     return(
         <div>
+            <User />
+            <Link to={`/homePage`}>Home</Link>
             <h1>{question.title}</h1>
             <h3>{question.description}</h3>
             {

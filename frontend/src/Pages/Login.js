@@ -31,7 +31,6 @@ export default function Login(){
                 password: userPassword
             })
                 .then(result =>{
-                    console.log(result.data.user)
                     localStorage.setItem("userId", `${result.data.user}`)
                     setPath(result.data.path)
                 })
@@ -43,7 +42,7 @@ export default function Login(){
     const signUpSubmit = (e) =>{
         e.preventDefault()
         setErr('')
-        if (userEmail === '' || userPassword === ''){
+        if (userName === '' || userEmail === '' || userPassword === ''){
             setErr("Field is required")
         } else{
             axios.post(`/signUp`,{
@@ -52,6 +51,7 @@ export default function Login(){
                 password: userPassword
             })
                 .then(result =>{
+                    localStorage.setItem("userId", `${result.data.user}`)
                     setPath(result.data)
                 })
                 .catch(err =>{
