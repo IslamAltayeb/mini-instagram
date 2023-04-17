@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import React from "react";
 import DeleteComment from "../Components/DeleteComment";
-import User from "../Components/User";
+import NavBar from "../Components/NavBar";
 import "../Style/Question.css"
 
 
@@ -106,18 +106,19 @@ export default function Question(){
     }
 
     return(
-        <div className="container">
-            <User />
-            <div className="question flex-column">
+        <div className="container flex-row">
+            <NavBar />
+            <div className="question-area flex-column">
+                <div className="question flex-column">
                 <span className="title flex-row">
                     <h2>Title:</h2>
                     <h1>{title}</h1>
                 </span>
-                <span className="description flex-row">
+                    <span className="description flex-row">
                     <h2>Description:</h2>
                     <h3>{description}</h3>
                 </span>
-                <div className="buttons flex-row">
+                    <div className="buttons flex-row">
                     <span>
                     {
                         userId === questionUserId ? <form onSubmit={deleteQuestion}>
@@ -125,43 +126,45 @@ export default function Question(){
                         </form>: null
                     }
                 </span>
-                    <span>
+                        <span>
                     {
                         userId === questionUserId ? <div onClick={edit} className="button">Edit
                         </div>: null
                     }
                 </span>
+                    </div>
+                    <div id="popUp" className="hidden">
+                        <form onSubmit={handleSubmit} className="flex-column">
+                            <span className="gg-close icon close-icon" onClick={editClose}></span>
+                            <input type="text" name="title" value={title} onChange={titleChange}/>
+                            <textarea name="description" value={description} onChange={descriptionChange}></textarea>
+                            <button className="submit" onClick={handleSubmit}>Submit</button>
+                        </form></div>
                 </div>
-                <div id="popUp" className="hidden">
-                    <form onSubmit={handleSubmit} className="flex-column">
-                        <span className="gg-close icon close-icon" onClick={editClose}></span>
-                        <input type="text" name="title" value={title} onChange={titleChange}/>
-                        <textarea name="description" value={description} onChange={descriptionChange}></textarea>
-                        <button className="submit" onClick={handleSubmit}>Submit</button>
-                    </form></div>
-            </div>
-            <div className="comment-area">
-                <form className="flex-row" onSubmit={commentSubmit}>
-                    <textarea name="txt" onChange={commentChange}></textarea>
-                    <button className="submit" onClick={commentSubmit}>Comment</button>
-                </form>
-                {
-                    err ? <h5>{err}</h5> : null
-                }
-                {comments && comments.map(comment =>{
-                    return(
-                        <div key={comment._id} className="oneComment flex-column">
-                            <div className="flex-row comment">
-                                <h4>- {comment.txt}</h4>
-                                {
-                                    userId === comment.user._id ? <DeleteComment id={comment._id}/> : null
-                                }
+                <div className="comment-area">
+                    <form className="flex-row" onSubmit={commentSubmit}>
+                        <textarea name="txt" onChange={commentChange}></textarea>
+                        <button className="submit" onClick={commentSubmit}>Comment</button>
+                    </form>
+                    {
+                        err ? <h5>{err}</h5> : null
+                    }
+                    {comments && comments.map(comment =>{
+                        return(
+                            <div key={comment._id} className="oneComment flex-column">
+                                <div className="flex-row comment">
+                                    <h4>- {comment.txt}</h4>
+                                    {
+                                        userId === comment.user._id ? <DeleteComment id={comment._id}/> : null
+                                    }
+                                </div>
+                                <h5>- {comment.user.userName}</h5>
                             </div>
-                            <h5>- {comment.user.userName}</h5>
-                        </div>
-                    )
-                })}
+                        )
+                    })}
+                </div>
             </div>
+
         </div>
     )
 }

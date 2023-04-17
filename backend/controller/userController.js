@@ -194,7 +194,13 @@ const getUser = (req, res) => {
         })
         .catch(err =>{ console.log(err)});
 }
-
+const updateUser = (req, res) =>{
+    userModel.findByIdAndUpdate(req.params.id, req.body)
+        .then(() => {
+            res.send(`/user/${req.params.id}`)
+        })
+        .catch(err => console.log(err))
+}
 module.exports = {
     homePage,
     logIn,
@@ -210,5 +216,6 @@ module.exports = {
     deleteComment,   
     addComment,
     loginPage,
-    getUser
+    getUser,
+    updateUser
 }

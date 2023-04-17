@@ -1,5 +1,8 @@
 .add-question{
-
+    background-color: #efefef;
+    width: 1000px;
+    padding: 100px 20px;
+    justify-content: center;
 }
 .add-question form{
     padding: 50px 20px;

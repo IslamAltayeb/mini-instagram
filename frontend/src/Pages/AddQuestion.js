@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {useParams, useNavigate} from "react-router-dom";
 import "../Style/AddQuestion.css"
-import User from "../Components/User";
+import NavBar from "../Components/NavBar";
 
 export default function AddQuestion(){
     const navigate = useNavigate();
@@ -51,20 +51,22 @@ export default function AddQuestion(){
         }
     }
     return(
-        <div className="add-question container">
-            <User/>
-            <h1>Add your question</h1>
-            <form onSubmit={handleSubmit}>
-                <input type="hidden" name="user" value={userId}/>
-                <input type="text" name="title" id="title" placeholder="Write title here..." onChange={titleChange}/>
-                <br/>
-                <textarea name="description" id="description" placeholder="Write your description here..." onChange={descriptionChange}></textarea>
-                <br/>
-                <button className="button-add-question" onClick={handleSubmit}>Add</button>
-            </form>
-            {
-                err ? <h5 className="error">{err}</h5> : null
-            }
+        <div className="container flex-row">
+            <NavBar/>
+            <div className="add-question">
+                <h1>Add your question</h1>
+                <form onSubmit={handleSubmit}>
+                    <input type="hidden" name="user" value={userId}/>
+                    <input type="text" name="title" id="title" placeholder="Write title here..." onChange={titleChange}/>
+                    <br/>
+                    <textarea name="description" id="description" placeholder="Write your description here..." onChange={descriptionChange}></textarea>
+                    <br/>
+                    <button className="button-add-question" onClick={handleSubmit}>Add</button>
+                </form>
+                {
+                    err ? <h5 className="error">{err}</h5> : null
+                }
+            </div>
         </div>
     )
 }

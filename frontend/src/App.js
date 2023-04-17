@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import HomePage from "./Pages/HomePage";
 import Question from "./Pages/Question";
 import AddQuestion from "./Pages/AddQuestion";
+import Profile from "./Pages/Profile";
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
                   <Route path='/homePage' element={<HomePage />}/>
                   <Route path='/question/:id' element={<Question />}/>
                   <Route path='/add-question/:id' element={<AddQuestion />}/>
+                  <Route path='/user/:id' element={<Profile />}/>
               </Routes>
           </div>
       </BrowserRouter>

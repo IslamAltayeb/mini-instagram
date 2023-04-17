@@ -1,0 +1,37 @@
+.profile-area{
+    gap: 15px;
+    width: 1000px;
+    padding: 100px 20px;
+    background-color: #efefef;
+}
+.profile-area h2{
+    font-size: 35px;
+}
+.profile-area h4{
+    font-size: 25px;
+}
+.profile-area h5{
+    font-weight: 400;
+    font-size: 25px;
+}
+.profile-area input{
+    padding: 5px 10px;
+    width: 200px;
+    border-radius: 15px;
+    height: 35px;
+}
+.profile-area textarea{
+    padding: 5px 10px;
+    width: 300px;
+    border-radius: 15px;
+    height: 150px;
+}
+.profile-item{
+    align-items: center;
+    gap: 15px;
+}
+.profile-item span{
+    margin-left: 15px;
+    font-size: 35px;
+    --ggs: 1.1;
+}

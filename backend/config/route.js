@@ -20,6 +20,6 @@ route.post('/delete-question/:id', userController.deleteQuestion);
 route.post('/delete-comment/:id', userController.deleteComment);
 route.post('/update-question/:id', userController.updateQuestion)
 route.post('/add-comment/:questionId', userController.addComment)
-
+route.post('/user/:id', userController.updateUser)
 
 module.exports = route;
