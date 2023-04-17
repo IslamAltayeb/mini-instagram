@@ -10,7 +10,7 @@ route.get('/homepage', userController.homePage);
 route.get('/login', middleware.checkLogIn, userController.loginPage)
 route.get('/addQuestion/:id' , userController.addNew)
 route.get('/question/:id', middleware.loggedInAlready, userController.commentPage );
-route.get('/edit/:id', userController.editQuestion);
+route.get('/user/:id', userController.getUser);
 
 
 route.post('/log-in', userController.logIn)

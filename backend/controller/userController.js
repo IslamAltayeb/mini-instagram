@@ -79,7 +79,7 @@ const signUp = async (request, response) => {
                 .then ( async () => {
                     let newToken = await jwt.sign({user}, 'user token')
                     response.cookie('jwt', newToken, { httpOnly: true })
-                    response.send({"path": `/homePage`, "user": `${user}`})
+                    response.send({"path": `/homePage`, "user": `${user._id}`})
                 })
                 .catch ( error => {
                     throw error
@@ -90,7 +90,7 @@ const signUp = async (request, response) => {
 
 const logOut = (request, response) => {
     response.clearCookie('jwt');
-    response.redirect('/')
+    response.send('/')
 }
 
 const addNew = (req,res) =>{
@@ -125,7 +125,6 @@ const commentPage = (req, res) => {
         })
         .catch(err => {console.log(err)})
 }
-
 //delete function
 const deleteQuestion = (req, res) => {
     questionModel.findByIdAndDelete(req.params.id)
@@ -187,7 +186,13 @@ const addComment = (req, res) => {
             console.log(error)
         })
 }
-
+const getUser = (req, res) => {
+    userModel.findById(req.params.id)
+        .then(result=> {
+            res.send({user: result})
+        })
+        .catch(err =>{ console.log(err)});
+}
 
 module.exports = {
     homePage,
@@ -203,5 +208,6 @@ module.exports = {
     updateQuestion, 
     deleteComment,   
     addComment,
-    loginPage
+    loginPage,
+    getUser
 }

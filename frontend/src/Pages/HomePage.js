@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import axios from "axios";
+import User from "../Components/User";
 
 export default function HomePage(){
     const [questions, setQuestions] = useState([])
@@ -17,10 +18,11 @@ export default function HomePage(){
     }, [])
     return(
         <>
+            <User/>
+            
             <div>
                 <Link to={`/add-question/${userId}`}>Add new</Link>
             </div>
-            Home
             {questions && questions.map(question =>{
                 return(
                     <div key={question._id}>
