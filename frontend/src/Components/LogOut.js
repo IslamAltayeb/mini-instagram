@@ -1,17 +1,15 @@
-import {Link} from "react-router-dom";
-import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 import axios from "axios";
 
 
 export default function LogOut(){
-    const [path, setPath] = useState('');
+    const navigate = useNavigate();
 
 
     const logOut = () =>{
         axios.get(`/logOut`)
             .then(result =>{
-                console.log(result.data)
-                setPath(result.data)
+                navigate(result.data)
             })
             .catch(err =>{
                 console.log(err)
@@ -19,7 +17,7 @@ export default function LogOut(){
     }
     return(
         <div>
-            <div onClick={logOut}><Link to={path}>Log Out</Link></div>
+            <div onClick={logOut}>Log Out</div>
         </div>
     )
 }

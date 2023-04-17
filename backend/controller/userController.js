@@ -115,6 +115,7 @@ const commentPage = (req, res) => {
     .populate('user')
         .then(result => {
             commentModel.find({question: result._id })
+                .populate('user')
                 .then( ( comments ) => {
                     res.send({
                         question: result,  

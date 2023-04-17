@@ -1,0 +1,40 @@
+.add-question{
+
+}
+.add-question form{
+    padding: 50px 20px;
+    border: 1px solid #ededed;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.add-question input{
+    background-color: #fafafa;
+    border: 1px solid #ededed;
+    font-size: 20px;
+    padding: 5px;
+    height: 50px;
+    width: 300px;
+}
+.add-question textarea{
+    background-color: #fafafa;
+    border: 1px solid #ededed;
+    padding: 5px;
+    height: 200px;
+    width: 500px;
+}
+.button-add-question{
+    color: white;
+    font-size: 20px;
+    border: 1px solid #ededed;
+    border-radius: 15px;
+    max-width: 150px;
+    background-color: #7ab3f4;
+    padding: 1px 5px;
+    width: 250px;
+}
+.button-add-question:hover{
+    cursor: pointer;
+    background-color: #5fa5f3;
+}

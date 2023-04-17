@@ -1,12 +1,10 @@
-a{
-    color: black;
-}
+
 .homepage{
     padding: 20px;
     border: 1px solid #ededed;
     display: flex;
     flex-direction: column;
-    gap: 100px;
+    gap: 50px;
 }
 .question-area{
     justify-content: space-around;
@@ -20,8 +18,8 @@ a{
     border: 1px solid black;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    width: 300px;
+    gap: 20px;
+    width: 270px;
     height: 200px;
     justify-content: space-around;
 }
@@ -32,5 +30,6 @@ a{
 }
 .question-card:hover{
     transform: scale(1.2);
+    background-color: #ededed;
     margin: 10px;
 }

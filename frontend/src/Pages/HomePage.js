@@ -24,7 +24,7 @@ export default function HomePage(){
             <User/>
             
             <div>
-                <Link to={`/add-question/${userId}`}>Add new</Link>
+                <h1>Do you have any questions? - Easy add a <Link to={`/add-question/${userId}`}>new</Link></h1>
             </div>
             <div className="question-area">
                 {questions && questions.map(question =>{

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import  {Link, useNavigate} from "react-router-dom";
+import  {useNavigate} from "react-router-dom";
 import axios from "axios";
 import "../Style/Login.css";
 
@@ -8,7 +8,6 @@ export default function Login(){
     const [userName, setUserName] = useState();
     const [userEmail, setUserEmail] = useState();
     const [userPassword, setUserPassword] = useState();
-    const [path, setPath] = useState('');
     const [err, setErr] = useState('')
 
     const userEmailChange = (e) =>{
@@ -52,7 +51,7 @@ export default function Login(){
             })
                 .then(result =>{
                     localStorage.setItem("userId", `${result.data.user}`)
-                    setPath(result.data)
+                    navigate(result.data)
                 })
                 .catch(err =>{
                     console.log(err)
@@ -66,7 +65,7 @@ export default function Login(){
                 <h2>Log In</h2>
                 <input type="email" name="email" placeholder="Email..." onChange={userEmailChange}/>
                 <input type="password" name="password" placeholder="Password..." onChange={userPasswordChange} autoComplete="off" />
-                {userEmail && userPassword ? < button onClick={loginSubmit} className="button-login"><Link to={path}>Login</Link></button> : null
+                {userEmail && userPassword ? < button onClick={loginSubmit} className="button-login">Login</button> : null
                 }
             </form>
             <form onSubmit={signUpSubmit} className="signup-form">
@@ -74,7 +73,7 @@ export default function Login(){
                 <input type="text" name="userName" placeholder="Username..." onChange={userNameChange}/>
                 <input type="email" name="email" placeholder="Email..." onChange={userEmailChange}/>
                 <input type="password" name="password" placeholder="Password..." onChange={userPasswordChange} autoComplete="off" />
-                {userEmail && userPassword && userName ? < button onClick={signUpSubmit} className="button-login"><Link to={path}>Sign Up</Link></button> : null
+                {userEmail && userPassword && userName ? < button onClick={signUpSubmit} className="button-login">Sign Up</button> : null
                 }
             </form>
             {

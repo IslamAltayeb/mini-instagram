@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {Link} from "react-router-dom";
 import LogOut from "../Components/LogOut";
 
 
@@ -20,6 +21,7 @@ useEffect(() =>{
         <div className="user">
             <p>Hello, {user.userName}</p>
             <LogOut/>
+            <Link to={`/homePage`}>Home</Link>
         </div>
     )
 }
