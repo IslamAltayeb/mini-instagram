@@ -24,6 +24,7 @@ export default function Question(){
                 setQuestionUserId(result.data.question.user._id)
                 setComments(result.data.comments)
                 setQuestion(result.data.question)
+                setTitle(result.data.question.title)
             })
             .catch(err =>{
                 console.log(err)
@@ -109,7 +110,7 @@ export default function Question(){
                     <div id="popUp" className="hidden">
                         <form onSubmit={handleSubmit}>
                             <div>
-                                <input type="text" name="title" value={question.title} onChange={titleChange}/>
+                                <input type="text" name="title" value={title} onChange={titleChange}/>
                                 <br/>
                                     <textarea name="description" onChange={descriptionChange}></textarea>
                             </div>

@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import {useParams, Link} from "react-router-dom";
+import {useParams, Link, useNavigate} from "react-router-dom";
 
 export default function AddQuestion(){
+    const navigate = useNavigate();
     let {id} = useParams()
     const [title, setTitle] = useState();
     const [description, setDescription] = useState();
@@ -39,7 +40,7 @@ export default function AddQuestion(){
                 user: user
             })
                 .then(result =>{
-                    setPath(result.data)
+                    navigate(result.data)
                 })
                 .catch(err =>{
                     console.log(err)
