@@ -16,8 +16,8 @@ export default function LogOut(){
             })
     }
     return(
-        <div>
-            <div onClick={logOut}>Log Out</div>
-        </div>
+        <>
+            <div onClick={logOut} className="logout nav-list">Log Out</div>
+        </>
     )
 }

@@ -1,6 +1,11 @@
+.question-area{
+    width: 1000px;
+    padding: 100px 20px;
+    justify-content: flex-start;
+    background-color: #efefef;
+}
 .question{
     gap: 10px;
-    padding: 50px 20px;
 }
 .question h2{
     font-size: 25px;

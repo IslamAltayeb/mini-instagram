@@ -1,0 +1,30 @@
+.user{
+    font-weight: 400;
+    font-size: 25px;
+    gap: 100px;
+    min-width: 200px;
+    max-width: 200px;
+    padding: 100px 10px;
+    border-right: 1px solid #ededed;
+}
+.user a{
+    text-decoration: none;
+    color: black;
+}
+.user p{
+    font-size: 20px;
+}
+.logo h2{
+    font-weight: 600;
+    font-size: 35px;
+    line-height: 1;
+}
+.nav-list:hover{
+    cursor: pointer;
+    width: 60%;
+    transform: scale(1.2);
+    padding: 5px;
+    background-color: rgba(222, 221, 221, 0.32);
+    border-radius: 15px;
+    border: 1px solid black;
+}

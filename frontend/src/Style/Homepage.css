@@ -1,5 +1,8 @@
 
-.homepage{
+.homepage-area{
+    width: 1000px;
+    align-items: center;
+    background-color: #efefef;
     padding: 20px;
     border: 1px solid #ededed;
     display: flex;
@@ -7,19 +10,19 @@
     gap: 50px;
 }
 .question-area{
+    width: 100%;
+    align-items: center;
     justify-content: space-around;
-    display: flex;
-    flex-direction: row;
     gap: 15px;
-    flex-wrap: wrap;
 }
 .question-card{
+    background-color: white;
     padding: 20px;
     border: 1px solid black;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 270px;
+    width: 70%;
     height: 200px;
     justify-content: space-around;
 }

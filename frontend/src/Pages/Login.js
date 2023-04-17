@@ -50,8 +50,9 @@ export default function Login(){
                 password: userPassword
             })
                 .then(result =>{
+                    console.log(result.data)
                     localStorage.setItem("userId", `${result.data.user}`)
-                    navigate(result.data)
+                    navigate(`/homePage`)
                 })
                 .catch(err =>{
                     console.log(err)
