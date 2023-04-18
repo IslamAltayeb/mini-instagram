@@ -39,13 +39,13 @@ const logIn = async (req, res) => {
         let user = await userModel.findOne({email : req.body.email});
         if (!user) {
             res.send({
-                error: 'user is not exist, please sign up first!'
+                error: 'User is not exist, please sign up first!'
             })
         }else{
             let correctPass = await bcrypt.compareSync(req.body.password, user.password)
             if (!correctPass) {
                 res.send({
-                    error: 'password is not correct'
+                    error: 'Password is not correct'
                 })
             } else{
                 let newToken = await jwt.sign({user}, 'user token')
@@ -66,7 +66,7 @@ const signUp = async (request, response) => {
     } else {
         if (!request.body.email || !request.body.password){
             response.send({
-                error: 'email and password are required'
+                error: 'Email and password are required'
             })
         } else {
             var hashedPassword = await bcrypt.hashSync(request.body.password, 12)

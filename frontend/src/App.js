@@ -4,6 +4,7 @@ import HomePage from "./Pages/HomePage";
 import Question from "./Pages/Question";
 import AddQuestion from "./Pages/AddQuestion";
 import Profile from "./Pages/Profile";
+import Video from "./Pages/Video";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
                   <Route path='/question/:id' element={<Question />}/>
                   <Route path='/add-question/:id' element={<AddQuestion />}/>
                   <Route path='/user/:id' element={<Profile />}/>
+                  <Route path='/video' element={<Video />}/>
               </Routes>
           </div>
       </BrowserRouter>

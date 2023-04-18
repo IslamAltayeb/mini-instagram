@@ -38,6 +38,7 @@ export default function Question(){
         setDescription(e.target.value)
     }
     const commentChange = (e) =>{
+        setErr('')
         setNewComment(e.target.value)
     }
     const handleSubmit = (e) =>{
@@ -59,7 +60,8 @@ export default function Question(){
                 })
         }
     }
-    const commentSubmit = () =>{
+    const commentSubmit = (e) =>{
+        e.preventDefault()
         setErr('')
         if (newComment === ''){
             setErr("Field is required")
@@ -69,8 +71,8 @@ export default function Question(){
                 user: userId,
                 question: id
             })
-                .then(result =>{
-                    navigate(result.data)
+                .then(() =>{
+                    window.location.reload()
                 })
                 .catch(err =>{
                     console.log(err)
@@ -145,7 +147,7 @@ export default function Question(){
                         <button className="submit" onClick={commentSubmit}>Comment</button>
                     </form>
                     {
-                        err ? <h5>{err}</h5> : null
+                        err ? <h5 className="error">{err}</h5> : null
                     }
                     {comments && comments.map(comment =>{
                         return(
