@@ -30,8 +30,12 @@ export default function Login(){
                 password: userPassword
             })
                 .then(result =>{
-                    localStorage.setItem("userId", `${result.data.user}`)
-                    navigate('/homePage')
+                    if (result.data.user){
+                        localStorage.setItem("userId", `${result.data.user}`)
+                        navigate(`/homePage`)
+                    } else {
+                        setErr(result.data.error)
+                    }
                 })
                 .catch(err =>{
                     console.log(err)
@@ -50,9 +54,12 @@ export default function Login(){
                 password: userPassword
             })
                 .then(result =>{
-                    console.log(result.data)
-                    localStorage.setItem("userId", `${result.data.user}`)
-                    navigate(`/homePage`)
+                    if (result.data.user){
+                        localStorage.setItem("userId", `${result.data.user}`)
+                        navigate(`/homePage`)
+                    } else {
+                        setErr(result.data.error)
+                    }
                 })
                 .catch(err =>{
                     console.log(err)
@@ -78,7 +85,7 @@ export default function Login(){
                 }
             </form>
             {
-                err ? <h5>{err}</h5> : null
+                err ? <h5 className="error">{err}</h5> : null
             }
         </div>
     )

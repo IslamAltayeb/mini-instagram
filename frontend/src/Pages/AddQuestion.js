@@ -34,7 +34,7 @@ export default function AddQuestion(){
     const handleSubmit = (e) =>{
         e.preventDefault()
         setErr('')
-        if (!title && !description){
+        if (!title || !description){
             setErr("All fields are required")
         } else{
             axios.post(`/add-new/${id}`,{

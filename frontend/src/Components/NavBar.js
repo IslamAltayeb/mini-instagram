@@ -35,7 +35,7 @@ useEffect(() =>{
             <ul>
                 <ol className="logout nav-list"><Link to={`/user/${user._id}`}>Profile</Link></ol>
                 <ol className="logout nav-list"><Link to={`/homePage`}>Home</Link></ol>
-                <ol className="logout nav-list">Video</ol>
+                <ol className="logout nav-list"><Link to={`/video`}>Video</Link></ol>
             </ul>
             <LogOut/>
         </div>

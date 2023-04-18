@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700;800&display=swap');
 *{
     font-family: 'Mukta', sans-serif;
@@ -22,10 +22,9 @@
     border: 3px solid black;
 }
 .error{
-    color: black;
-    background-color: red;
-    padding: 10px;
-    border: 1px solid black;
+    font-family: 'Courgette', cursive;
+    font-size: 25px;
+    color: red;
 }
 .flex-row{
     display: flex;
