@@ -21,9 +21,7 @@ export default function Question(){
     useEffect(() =>{
         axios.get(`/question/${id}`)
             .then(result =>{
-                console.log(result.data.question)
                 setQuestionUserId(result.data.question.user._id)
-                console.log(result.data.comments)
                 setComments(result.data.comments)
                 setDescription(result.data.question.description)
                 setTitle(result.data.question.title)
@@ -155,7 +153,7 @@ export default function Question(){
                                 <div className="flex-row comment">
                                     <h4>- {comment.txt}</h4>
                                     {
-                                        userId === comment.user._id ? <DeleteComment id={comment._id}/> : null
+                                        userId === comment.user._id ? <DeleteComment id={comment._id} questionId={comment.question}/> : null
                                     }
                                 </div>
                                 <h5>- {comment.user.userName}</h5>

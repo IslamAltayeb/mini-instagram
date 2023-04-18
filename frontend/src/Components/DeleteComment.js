@@ -8,8 +8,8 @@ export default function DeleteComment(props){
 
     const deleteComment = () =>{
         axios.post(`/delete-comment/${props.id}`)
-            .then(result =>{
-                navigate(result.data)
+            .then(() =>{
+                window.location.reload()
             })
             .catch(err =>{
                 console.log(err)

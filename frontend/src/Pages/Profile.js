@@ -14,7 +14,7 @@ export default function Profile(){
     const [err, setErr] = useState('');
     const userId = localStorage.getItem("userId")
 
-    useEffect(() =>{
+    function getUser() {
         axios.get(`/user/${id}`)
             .then(result =>{
                 setUser(result.data.user)
@@ -22,6 +22,9 @@ export default function Profile(){
             .catch(err =>{
                 console.log(err)
             })
+    }
+    useEffect(() =>{
+        getUser()
     }, [])
     const firstNameChange = (e) =>{
         console.log(e.target.value)
@@ -41,7 +44,8 @@ export default function Profile(){
             firstName: firstName,
         })
             .then(() =>{
-                navigate(`/user/${userId}`)
+                getUser()
+                window.location.reload()
             })
             .catch(err =>{
                 console.log(err)
@@ -54,7 +58,8 @@ export default function Profile(){
             lastName: lastName,
         })
             .then(() =>{
-                navigate(`/user/${userId}`)
+                getUser()
+                window.location.reload()
             })
             .catch(err =>{
                 console.log(err)
@@ -67,7 +72,8 @@ export default function Profile(){
             about: about,
         })
             .then(() =>{
-                navigate(`/user/${userId}`)
+                getUser()
+                window.location.reload()
             })
             .catch(err =>{
                 console.log(err)
@@ -81,7 +87,7 @@ export default function Profile(){
             firstName: firstName,
         })
             .then(() =>{
-                navigate(`/user/${userId}`)
+                getUser()
             })
             .catch(err =>{
                 console.log(err)
@@ -96,7 +102,7 @@ export default function Profile(){
             lastName: lastName,
         })
             .then(() =>{
-                navigate(`/user/${userId}`)
+                getUser()
             })
             .catch(err =>{
                 console.log(err)
@@ -110,7 +116,7 @@ export default function Profile(){
             about: about,
         })
             .then(() =>{
-                navigate(`/user/${userId}`)
+                getUser()
             })
             .catch(err =>{
                 console.log(err)
