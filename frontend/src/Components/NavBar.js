@@ -26,7 +26,10 @@ useEffect(() =>{
                 <h2>Community</h2>
             </span>
             <div>
-                <p>Hello,</p>
+                {user.image ?
+                <span className="profile-img-navbar">
+                    <img src={"http://localhost:2100"+user.image} alt="avatar"/>
+                </span> : <p>Hello,</p>}
                 {user.firstName ? <h2>{user.firstName}</h2>  : <h2>User</h2>}
             </div>
             <ul>

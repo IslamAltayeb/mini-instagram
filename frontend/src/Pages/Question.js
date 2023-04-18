@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import React from "react";
 import DeleteComment from "../Components/DeleteComment";
 import NavBar from "../Components/NavBar";
@@ -110,11 +110,11 @@ export default function Question(){
                 <div className="question flex-column">
                 <span className="title flex-row">
                     <h2>Title:</h2>
-                    <h1>{title}</h1>
+                    <h1 className="question-text">{title}</h1>
                 </span>
                     <span className="description flex-row">
                     <h2>Description:</h2>
-                    <h3>{description}</h3>
+                    <h3 className="description-text">{description}</h3>
                 </span>
                     <div className="buttons flex-row">
                     <span>
@@ -156,7 +156,7 @@ export default function Question(){
                                         userId === comment.user._id ? <DeleteComment id={comment._id} questionId={comment.question}/> : null
                                     }
                                 </div>
-                                <h5>- {comment.user.userName}</h5>
+                                <h5>- <Link to={`/user/${comment.user._id}`}>{comment.user.userName}</Link></h5>
                             </div>
                         )
                     })}
