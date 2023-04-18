@@ -29,11 +29,16 @@ export default function HomePage(){
                         return(
                             <div key={question._id} className="question-card">
                                 <h3>{question.title}</h3>
-                                <p>{question.description.slice(0, 50)}</p>
+                                <p>{question.description.slice(0, 100)}</p>
                                 <h5>
                                     <Link to={`/user/${question.user._id}`}>
                                         <strong>
-                                            {question.user.userName ? question.user.userName : null}
+                                            {question.user ? <div className="flex-row user-question-info">
+                                                {question.user.image ? <span className="profile-img-homePage">
+                                                    <img src={"http://localhost:2100"+question.user.image} alt="avatar"/>
+                                                </span> : null}
+                                                <p>{question.user.userName}</p>
+                                            </div> : null}
                                         </strong>
                                     </Link>
                                     <Link to={`/question/${question._id}`}>See more</Link>

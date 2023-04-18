@@ -36,3 +36,12 @@
     background-color: #ededed;
     margin: 10px;
 }
+.profile-img-homePage{
+    display: flex;
+    width: 40px;
+    height: 40px;
+}
+.user-question-info{
+    gap: 5px;
+    align-items: flex-end;
+}

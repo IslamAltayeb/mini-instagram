@@ -7,6 +7,9 @@
 .question{
     gap: 10px;
 }
+.question-text{
+    max-width: 700px;
+}
 .question h2{
     font-size: 25px;
     font-weight: 400;
@@ -29,10 +32,15 @@
     font-size: 20px;
     border: 1px solid #ededed;
     border-radius: 15px;
-    max-width: 150px;
     background-color: #7ab3f4;
     padding: 1px 5px;
-    width: 250px;
+    width: 150px;
+}
+.submit:hover{
+    transform: scale(0.9);
+    cursor: pointer;
+    background-color: #437bbb;
+
 }
 .button:hover{
     cursor: pointer;
@@ -43,6 +51,9 @@
 }
 .description{
     justify-content: flex-start;
+}
+.description-text{
+    max-width: 700px;
 }
 .description h3{
     display: flex;
