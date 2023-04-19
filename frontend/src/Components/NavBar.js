@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
 import LogOut from "../Components/LogOut";
-import "../Style/NavBar.css"
+import "../Style/User.css"
 
 
 export default function NavBar(){
