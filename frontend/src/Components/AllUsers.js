@@ -10,7 +10,6 @@ export default function AllUsers(){
     useEffect(() =>{
         axios.get(`/allUsers`)
             .then(result =>{
-                console.log(result.data.user)
                 setUsers(result.data.user)
             })
             .catch(err =>{
