@@ -4,6 +4,7 @@ import axios from "axios";
 import "../Style/Homepage.css"
 
 import NavBar from "../Components/NavBar";
+import AllUsers from "../Components/AllUsers";
 
 export default function HomePage(){
     const [questions, setQuestions] = useState([])
@@ -23,6 +24,7 @@ export default function HomePage(){
 
             <NavBar/>
             <div className="homepage-area flex-column">
+                <AllUsers />
                 <h1>Do you have any questions? - Easy add a <Link to={`/add-question/${userId}`}>new</Link></h1>
                 <div className="question-area-home flex-column">
                     {questions && questions.map(question =>{
