@@ -19,10 +19,11 @@
     font-size: 35px;
     line-height: 1;
 }
+
 .nav-list:hover{
     cursor: pointer;
     width: 60%;
-    transform: scale(1.2);
+    transform: scale(1.1);
     padding: 5px;
     background-color: rgba(222, 221, 221, 0.32);
     border-radius: 15px;
