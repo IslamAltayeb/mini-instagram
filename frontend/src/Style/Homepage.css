@@ -3,16 +3,13 @@
     width: 1000px;
     align-items: center;
     background-color: #efefef;
-    padding: 20px;
+    padding: 100px 20px;
     border: 1px solid #ededed;
-    display: flex;
-    flex-direction: column;
     gap: 50px;
 }
-.question-area{
+.question-area-home{
     width: 100%;
     align-items: center;
-    justify-content: space-around;
     gap: 15px;
 }
 .question-card{
