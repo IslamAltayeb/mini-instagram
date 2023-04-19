@@ -13,7 +13,6 @@ export default function Profile(){
     const [lastName, setLastName] = useState('')
     const [imagePath, setImagePath] = useState('')
     const [about, setAbout] = useState('')
-    const [err, setErr] = useState('');
     const userId = localStorage.getItem("userId")
 
     function getUser() {
