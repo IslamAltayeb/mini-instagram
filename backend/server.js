@@ -34,6 +34,6 @@ app.post("/uploadFile/:id", upload.single("avatar"), (req,res) =>{
     })
 
 })
-let PORT = 2200;
+let PORT = 2100;
 
 app.listen(PORT, () => console.log(`The Timeline is on ${PORT}`));
