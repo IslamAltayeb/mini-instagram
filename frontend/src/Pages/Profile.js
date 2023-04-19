@@ -3,6 +3,7 @@ import axios from "axios";
 import NavBar from "../Components/NavBar";
 import {useNavigate, useParams} from "react-router-dom";
 import "../Style/Profile.css"
+import ProfileQuestion from "../Components/ProfileQuestion";
 
 export default function Profile(){
     let {id} = useParams();
@@ -199,6 +200,7 @@ export default function Profile(){
                                 </div>
                             }
                         </span>
+                        <ProfileQuestion id={id}/>
                     </form>
                 </div> :
                     <div className="container flex-row">
@@ -229,6 +231,7 @@ export default function Profile(){
                                 <h5 className="about-me-title">About me : </h5>
                                 <h4 className="about-me">{user.about}</h4>
                             </span>
+                            <ProfileQuestion id={id}/>
                         </form>
                     </div>
             }
