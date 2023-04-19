@@ -22,9 +22,9 @@ export default function HomePage(){
         <div className="flex-row container">
 
             <NavBar/>
-            <div className="homepage-area">
+            <div className="homepage-area flex-column">
                 <h1>Do you have any questions? - Easy add a <Link to={`/add-question/${userId}`}>new</Link></h1>
-                <div className="question-area flex-column">
+                <div className="question-area-home flex-column">
                     {questions && questions.map(question =>{
                         return(
                             <div key={question._id} className="question-card">
