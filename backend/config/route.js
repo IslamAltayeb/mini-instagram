@@ -11,7 +11,7 @@ route.get('/login', middleware.checkLogIn, userController.loginPage)
 route.get('/addQuestion/:id' , userController.addNew)
 route.get('/question/:id', middleware.loggedInAlready, userController.commentPage );
 route.get('/user/:id', userController.getUser);
-
+route.get('/allUsers', userController.getAllUsers);
 
 route.post('/log-in', userController.logIn)
 route.post('/signUp', userController.signUp);

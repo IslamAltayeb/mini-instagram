@@ -201,6 +201,14 @@ const updateUser = (req, res) =>{
         })
         .catch(err => console.log(err))
 }
+const getAllUsers = (req, res) =>{
+    userModel.find()
+        .then(user => {
+            res.send({user: user
+        })
+        })
+        .catch(err => console.log(err))
+}
 module.exports = {
     homePage,
     logIn,
@@ -217,5 +225,6 @@ module.exports = {
     addComment,
     loginPage,
     getUser,
-    updateUser
+    updateUser,
+    getAllUsers
 }
