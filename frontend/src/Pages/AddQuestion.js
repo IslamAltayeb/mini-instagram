@@ -11,6 +11,8 @@ export default function AddQuestion(){
     const [description, setDescription] = useState();
     const [err, setErr] = useState('');
     const [user, setUser] = useState();
+    const [image, setImage] = useState({})
+    const [newQuestionId, setNewQuestionId] = useState([])
     const userId = localStorage.getItem("userId")
 
     const titleChange = (e) =>{
@@ -43,12 +45,33 @@ export default function AddQuestion(){
                 user: user
             })
                 .then(result =>{
-                    navigate(result.data)
+                    let formData = new FormData();
+
+                    formData.append("questionImage", image)
+
+                    fetch(`/uploadQuestionImage/${result.data._id}`, {
+                        method: "post",
+                        body: formData,
+                    })
+                    navigate(`/homePage`)
                 })
                 .catch(err =>{
                     console.log(err)
                 })
         }
+    }
+    const imageChange = (e) =>{
+        setImage(e.target.files[0])
+    }
+    function sendQuestionImage() {
+        let formData = new FormData();
+
+        formData.append("questionImage", image)
+
+        fetch(`/uploadQuestionImage/${JSON.parse(newQuestionId)}`, {
+            method: "post",
+            body: formData,
+        })
     }
     return(
         <div className="container flex-row">
@@ -58,9 +81,8 @@ export default function AddQuestion(){
                 <form onSubmit={handleSubmit}>
                     <input type="hidden" name="user" value={userId}/>
                     <input type="text" name="title" id="title" placeholder="Write title here..." onChange={titleChange}/>
-                    <br/>
                     <textarea name="description" id="description" placeholder="Write your description here..." onChange={descriptionChange}></textarea>
-                    <br/>
+                    <input type="file" onChange={imageChange}/>
                     <button className="button-add-question" onClick={handleSubmit}>Add</button>
                 </form>
                 {

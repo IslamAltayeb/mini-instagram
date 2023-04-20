@@ -32,6 +32,11 @@ export default function HomePage(){
                             <div key={question._id} className="question-card">
                                 <h3>{question.title}</h3>
                                 <p>{question.description.slice(0, 100)}</p>
+                                <span>
+                                    {question.image ? <span className="question-img"><img src={"http://localhost:2100"+question.image} alt="avatar"/></span> :
+                                        null
+                                    }
+                                </span>
                                 <h5>
                                     <Link to={`/user/${question.user._id}`}>
                                         <strong>

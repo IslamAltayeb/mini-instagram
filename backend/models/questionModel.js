@@ -13,6 +13,9 @@ const questionSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "user"
     },
+    image :{
+        type: String,
+    },
     description:{
         type: String,
         required : true,
