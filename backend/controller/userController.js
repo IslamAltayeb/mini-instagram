@@ -148,8 +148,8 @@ const addNew = (req,res) =>{
 const addQuestion = (request, response) => {
     let newQuestion = new questionModel(request.body);
             newQuestion.save()
-                .then(() => {
-                    response.send(`/homePage`)
+                .then(result => {
+                    response.send(result)
                 })
                 .catch(error => {
                     console.log(error)

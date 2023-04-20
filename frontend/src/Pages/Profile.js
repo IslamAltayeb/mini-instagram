@@ -138,7 +138,6 @@ export default function Profile(){
             body: formData,
         })
         setImagePath(`http://localhost:2100${user.image}`)
-        console.log(imagePath)
     }
 
     return(
