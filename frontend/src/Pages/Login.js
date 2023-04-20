@@ -11,19 +11,22 @@ export default function Login(){
     const [err, setErr] = useState('')
 
     const userEmailChange = (e) =>{
+        setErr('')
         setUserEmail(e.target.value)
     }
     const userPasswordChange = (e) =>{
+        setErr('')
         setUserPassword(e.target.value)
     }
     const userNameChange = (e) =>{
+        setErr('')
         setUserName(e.target.value)
     }
     const loginSubmit = (e) =>{
         e.preventDefault()
         setErr('')
         if (userEmail === '' || userPassword === ''){
-            setErr("Field is required")
+            setErr("Email and password are required")
         } else{
             axios.post(`/log-in`,{
                 email: userEmail,
@@ -46,7 +49,7 @@ export default function Login(){
         e.preventDefault()
         setErr('')
         if (userName === '' || userEmail === '' || userPassword === ''){
-            setErr("Field is required")
+            setErr("Email and password are required")
         } else{
             axios.post(`/signUp`,{
                 userName: userName,
