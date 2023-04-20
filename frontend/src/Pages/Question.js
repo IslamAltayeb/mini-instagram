@@ -13,6 +13,7 @@ export default function Question(){
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState('');
     const [title, setTitle] = useState();
+    const [image, setimage] = useState();
     const [description, setDescription] = useState();
     const [err, setErr] = useState('');
     const [questionUserId, setQuestionUserId] = useState('');
@@ -24,6 +25,7 @@ export default function Question(){
                 setQuestionUserId(result.data.question.user._id)
                 setComments(result.data.comments)
                 setDescription(result.data.question.description)
+                setimage(result.data.question.image)
                 setTitle(result.data.question.title)
             })
             .catch(err =>{
@@ -118,6 +120,11 @@ export default function Question(){
                     <h2>Description:</h2>
                     <h3 className="description-text">{description}</h3>
                 </span>
+                    <span>
+                        {image ? <span className="question-img"><img src={"http://localhost:2100"+image} alt="avatar"/></span> :
+                            null
+                        }
+                    </span>
                     <div className="buttons flex-row">
                     <span>
                     {
