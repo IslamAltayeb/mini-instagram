@@ -33,7 +33,7 @@ const loginPage = (req, res)=> {
 const logIn = async (req, res) => {
     if (!req.body.email || !req.body.password) {
         res.send({
-            error: 'email and password are required'
+            error: 'Email and password are required'
         })
     }else{
         let user = await userModel.findOne({email : req.body.email});

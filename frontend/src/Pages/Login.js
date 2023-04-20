@@ -73,16 +73,14 @@ export default function Login(){
                 <h2>Log In</h2>
                 <input type="email" name="email" placeholder="Email..." onChange={userEmailChange}/>
                 <input type="password" name="password" placeholder="Password..." onChange={userPasswordChange} autoComplete="off" />
-                {userEmail && userPassword ? < button onClick={loginSubmit} className="button-login">Login</button> : null
-                }
+                < button onClick={loginSubmit} className="button-login">Login</button>
             </form>
             <form onSubmit={signUpSubmit} className="signup-form">
                 <h2>Sign Up</h2>
                 <input type="text" name="userName" placeholder="Username..." onChange={userNameChange}/>
                 <input type="email" name="email" placeholder="Email..." onChange={userEmailChange}/>
                 <input type="password" name="password" placeholder="Password..." onChange={userPasswordChange} autoComplete="off" />
-                {userEmail && userPassword && userName ? < button onClick={signUpSubmit} className="button-login">Sign Up</button> : null
-                }
+                < button onClick={signUpSubmit} className="button-login">Sign Up</button>
             </form>
             {
                 err ? <h5 className="error">{err}</h5> : null
