@@ -6,6 +6,7 @@
 }
 .video-area img{
     border-radius: 0;
+    height: 250px;
 }
 .video-area input{
     font-size: 20px;
@@ -13,9 +14,14 @@
     border: 1px solid #ededed;
     border-radius: 15px;
     padding: 5px 10px;
-    height: 50px;
+    height: 40px;
     width: 80%;
 }
+
+.video-area input:focus{
+    outline: none;
+}
+
 .video-title{
     background-color: #fafafa;
     border: 1px solid #ededed;
