@@ -11,19 +11,22 @@ export default function Login(){
     const [err, setErr] = useState('')
 
     const userEmailChange = (e) =>{
+        setErr('')
         setUserEmail(e.target.value)
     }
     const userPasswordChange = (e) =>{
+        setErr('')
         setUserPassword(e.target.value)
     }
     const userNameChange = (e) =>{
+        setErr('')
         setUserName(e.target.value)
     }
     const loginSubmit = (e) =>{
         e.preventDefault()
         setErr('')
         if (userEmail === '' || userPassword === ''){
-            setErr("Field is required")
+            setErr("Email and password are required")
         } else{
             axios.post(`/log-in`,{
                 email: userEmail,
@@ -46,7 +49,7 @@ export default function Login(){
         e.preventDefault()
         setErr('')
         if (userName === '' || userEmail === '' || userPassword === ''){
-            setErr("Field is required")
+            setErr("Email and password are required")
         } else{
             axios.post(`/signUp`,{
                 userName: userName,
@@ -73,16 +76,14 @@ export default function Login(){
                 <h2>Log In</h2>
                 <input type="email" name="email" placeholder="Email..." onChange={userEmailChange}/>
                 <input type="password" name="password" placeholder="Password..." onChange={userPasswordChange} autoComplete="off" />
-                {userEmail && userPassword ? < button onClick={loginSubmit} className="button-login">Login</button> : null
-                }
+                < button onClick={loginSubmit} className="button-login">Login</button>
             </form>
             <form onSubmit={signUpSubmit} className="signup-form">
                 <h2>Sign Up</h2>
                 <input type="text" name="userName" placeholder="Username..." onChange={userNameChange}/>
                 <input type="email" name="email" placeholder="Email..." onChange={userEmailChange}/>
                 <input type="password" name="password" placeholder="Password..." onChange={userPasswordChange} autoComplete="off" />
-                {userEmail && userPassword && userName ? < button onClick={signUpSubmit} className="button-login">Sign Up</button> : null
-                }
+                < button onClick={signUpSubmit} className="button-login">Sign Up</button>
             </form>
             {
                 err ? <h5 className="error">{err}</h5> : null

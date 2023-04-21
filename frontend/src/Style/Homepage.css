@@ -19,7 +19,6 @@
     flex-direction: column;
     gap: 20px;
     width: 70%;
-    height: 200px;
     justify-content: space-around;
     transition: 1s;
     cursor: pointer;
@@ -46,3 +45,4 @@
     gap: 5px;
     align-items: flex-end;
 }
+

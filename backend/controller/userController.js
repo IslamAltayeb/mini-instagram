@@ -33,9 +33,13 @@ const loginPage = (req, res)=> {
 const logIn = async (req, res) => {
     if (!req.body.email || !req.body.password) {
         res.send({
-            error: 'email and password are required'
+            error: 'Email is required'
         })
-    }else{
+    } else if (!req.body.password){
+        res.send({
+            error: 'Password is required'
+        })
+    }  else {
         let user = await userModel.findOne({email : req.body.email});
         if (!user) {
             res.send({
@@ -57,6 +61,38 @@ const logIn = async (req, res) => {
 
 }          
 
+// const signUp = async (request, response) => {
+//     let existUser = await userModel.findOne({email: request.body.email})
+//     if (existUser){
+//         response.send({
+//             error: 'This email is already in use!'
+//         })
+//     } else {
+//         if (!request.body.email || !request.body.password || !request.body.userName){
+//             response.send({
+//                 error: 'Username, email and password are required'
+//             })
+//         } else {
+//             var hashedPassword = await bcrypt.hashSync(request.body.password, 12)
+//             let newUserObj = {
+//                 ...request.body,
+//                 password: hashedPassword
+//             }
+//             let user = new userModel(newUserObj)
+//             user.save()
+//                 .then ( async () => {
+//                     let newToken = await jwt.sign({user}, 'user token')
+//                     response.cookie('jwt', newToken, { httpOnly: true })
+//                     response.send({"path": `/homePage`, "user": `${user._id}`})
+//                 })
+//                 .catch ( error => {
+//                     throw error
+//                 })
+//         }
+//     }
+// }
+
+
 const signUp = async (request, response) => {
     let existUser = await userModel.findOne({email: request.body.email})
     if (existUser){
@@ -64,9 +100,17 @@ const signUp = async (request, response) => {
             error: 'This email is already in use!'
         })
     } else {
-        if (!request.body.email || !request.body.password){
+        if (!request.body.userName){
             response.send({
-                error: 'Email and password are required'
+                error: 'Username is required'
+            })
+        } else if (!request.body.email){
+            response.send({
+                error: 'Email is required'
+            })
+        } else if (!request.body.password){
+            response.send({
+                error: 'Password is required'
             })
         } else {
             var hashedPassword = await bcrypt.hashSync(request.body.password, 12)
@@ -88,6 +132,8 @@ const signUp = async (request, response) => {
     }
 }
 
+
+
 const logOut = (request, response) => {
     response.clearCookie('jwt');
     response.send('/')
@@ -102,8 +148,8 @@ const addNew = (req,res) =>{
 const addQuestion = (request, response) => {
     let newQuestion = new questionModel(request.body);
             newQuestion.save()
-                .then(() => {
-                    response.send(`/homePage`)
+                .then(result => {
+                    response.send(result)
                 })
                 .catch(error => {
                     console.log(error)
