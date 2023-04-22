@@ -5,7 +5,7 @@
     min-width: 200px;
     max-width: 200px;
     padding: 100px 10px;
-    border-right: 1px solid red;
+    border-right: 1px solid #d8d8d8;
 }
 .user a{
     text-decoration: none;

@@ -1,11 +1,12 @@
 .users-area{
     width: 80%;
+    padding: 25px;
     gap: 10px;
     white-space: nowrap;
     overflow: auto;
 }
 .profile-img-users{
-    border: 2px solid red;
+    border: 2px solid #a6a6a6;
     border-radius: 50%;
     padding: 3px;
     display: flex;
@@ -13,5 +14,5 @@
     height: 100px;
 }
 .profile-img-users:hover{
-    transform: scale(0.8);
+    transform: scale(1.1);
 }
