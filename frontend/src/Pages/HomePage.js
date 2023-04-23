@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import axios from "axios";
 import "../Style/Homepage.css"
-
 import NavBar from "../Components/NavBar";
 import AllUsers from "../Components/AllUsers";
 
@@ -53,8 +52,8 @@ export default function HomePage(){
                         )
                     })}
                 </div>
-            </div>
-            <AllUsers />
-        </div>
+            </div>            
+            <AllUsers />            
+        </div>        
     )
 }

@@ -31,7 +31,7 @@ export default function AddQuestion(){
             .catch(err =>{
                 console.log(err)
             })
-    },[])
+    },[id])
 
     const handleSubmit = (e) =>{
         e.preventDefault()
