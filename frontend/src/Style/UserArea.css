@@ -1,11 +1,31 @@
 .users-area{
-    width: 80%;
-    padding: 25px;
+    width: 13%;
+    padding: 100px 25px;
     gap: 10px;
     white-space: nowrap;
     overflow: auto;
 }
+.users-area-title h2{
+    display: flex;
+    align-self: flex-end;
+    font-weight: 600;
+    font-size: 35px;
+    line-height: 1;
+}
+.users-area-title{
+    margin-bottom: 50px;
+}
+.users-area-length{
+    padding: 2px;
+    text-align: right;
+    background: -webkit-linear-gradient(#af3535, #333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 55px;
+    line-height: 1;
+}
 .profile-img-users{
+    margin-left: 15px;
     border: 2px solid #a6a6a6;
     border-radius: 50%;
     padding: 3px;

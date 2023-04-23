@@ -1,0 +1,11 @@
+.footer{
+    text-align: center;
+    padding: 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0 auto;
+}
+
+.footer span{
+    color: green;
+}

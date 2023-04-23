@@ -5,6 +5,8 @@ import Question from "./Pages/Question";
 import AddQuestion from "./Pages/AddQuestion";
 import Profile from "./Pages/Profile";
 import Video from "./Pages/Video";
+import Footer from "./Pages/Footer";
+import Notfound from "./Pages/Notfound";
 
 
 function App() {
@@ -18,7 +20,9 @@ function App() {
                   <Route path='/add-question/:id' element={<AddQuestion />}/>
                   <Route path='/user/:id' element={<Profile />}/>
                   <Route path='/video' element={<Video />}/>
+                  <Route path="*" element={<Notfound />} />
               </Routes>
+              <Footer />
           </div>
       </BrowserRouter>
   );
