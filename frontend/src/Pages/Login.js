@@ -26,7 +26,9 @@ export default function Login(){
         e.preventDefault()
         setErr('')
         if (userEmail === '' || userPassword === ''){
-            setErr("Email and password are required")
+            setErr("Email is required")
+        } else if (userPassword === ''){
+            setErr("Password is required")
         } else{
             axios.post(`/log-in`,{
                 email: userEmail,

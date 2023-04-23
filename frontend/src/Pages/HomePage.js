@@ -24,7 +24,6 @@ export default function HomePage(){
 
             <NavBar/>
             <div className="homepage-area flex-column">
-                <AllUsers />
                 <h1>Do you have any questions? - Easy add a <Link to={`/add-question/${userId}`}>new</Link></h1>
                 <div className="question-area-home flex-column">
                     {questions && questions.map(question =>{
@@ -55,6 +54,7 @@ export default function HomePage(){
                     })}
                 </div>
             </div>
+            <AllUsers />
         </div>
     )
 }

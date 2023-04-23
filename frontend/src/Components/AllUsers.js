@@ -19,7 +19,13 @@ export default function AllUsers(){
 
 
     return(
-        <div className="flex-row users-area">
+        <div className="flex-column users-area">
+            <div className="flex-column users-area-title">
+                <h2>Check</h2>
+                <h2>All</h2>
+                <p className="users-area-length">{users.length}</p>
+                <h2>Users</h2>
+            </div>
             {
                 users && users.map(user=>{
                     return(
