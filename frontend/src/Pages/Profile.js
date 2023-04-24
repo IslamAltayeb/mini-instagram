@@ -25,9 +25,9 @@ export default function Profile(){
                 console.log(err)
             })
     }
-    useEffect(() =>{
-        getUser()
-    }, [])
+    useEffect(() =>{       
+        getUser(id)
+    }, [id])
     const firstNameChange = (e) =>{
         console.log(e.target.value)
         setFirstName(e.target.value)

@@ -7,6 +7,7 @@ import Profile from "./Pages/Profile";
 import Video from "./Pages/Video";
 import Footer from "./Pages/Footer";
 import Notfound from "./Pages/Notfound";
+import {PublicRoutes,PrivateRoute} from "./Config"
 
 
 function App() {
@@ -14,12 +15,12 @@ function App() {
       <BrowserRouter>
           <div className="App">
               <Routes>
-                  <Route path='/' element={<Login />}/>
-                  <Route path='/homePage' element={<HomePage />}/>
-                  <Route path='/question/:id' element={<Question />}/>
-                  <Route path='/add-question/:id' element={<AddQuestion />}/>
-                  <Route path='/user/:id' element={<Profile />}/>
-                  <Route path='/video' element={<Video />}/>
+                  <Route path='/' element={<PublicRoutes> <Login /> </PublicRoutes>}/>
+                  <Route path='/homePage' element={<PrivateRoute> <HomePage /> </PrivateRoute>}/>
+                  <Route path='/question/:id' element={<PrivateRoute> <Question /> </PrivateRoute>}/>
+                  <Route path='/add-question/:id' element={<PrivateRoute> <AddQuestion /> </PrivateRoute>}/>
+                  <Route path='/user/:id' element={<PrivateRoute> <Profile/> </PrivateRoute>}/>
+                  <Route path='/video' element={<PrivateRoute> <Video /> </PrivateRoute>}/>
                   <Route path="*" element={<Notfound />} />
               </Routes>
               <Footer />
