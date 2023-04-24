@@ -31,7 +31,7 @@ export default function Question(){
             .catch(err =>{
                 console.log(err)
             })
-    },[])
+    },[id])
 
     const titleChange = (e) =>{
         setTitle(e.target.value)
@@ -165,7 +165,9 @@ export default function Question(){
                                         userId === comment.user._id ? <DeleteComment id={comment._id} questionId={comment.question}/> : null
                                     }
                                 </div>
-                                <h5>- <Link to={`/user/${comment.user._id}`}>{comment.user.userName}</Link></h5>
+                               
+                                <h5>- <Link to={`/user/${comment.user._id}`}>{comment.user.userName}</Link> <p>{comment.created_at.slice(0, 10)}</p></h5>
+                                
                             </div>
                         )
                     })}
