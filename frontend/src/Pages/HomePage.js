@@ -43,9 +43,12 @@ export default function HomePage(){
                                                     <img src={"http://localhost:2100"+question.user.image} alt="avatar"/>
                                                 </span> : null}
                                                 <p>{question.user.userName}</p>
+                                                
                                             </div> : null}
                                         </strong>
+                                        <div className="date">{question.created_at.slice(0, 10)} </div>
                                     </Link>
+                                    
                                     <Link to={`/question/${question._id}`}>See more</Link>
                                 </h5>
                             </div>

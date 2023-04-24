@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import  {useNavigate} from "react-router-dom";
 import axios from "axios";
 import "../Style/Login.css";
-
+import Cookie from 'js-cookie';
 export default function Login(){
     const navigate = useNavigate();
     const [userName, setUserName] = useState();
@@ -37,6 +37,7 @@ export default function Login(){
                 .then(result =>{
                     if (result.data.user){
                         localStorage.setItem("userId", `${result.data.user}`)
+                        Cookie.set('user', result.data.user)
                         navigate(`/homePage`)
                     } else {
                         setErr(result.data.error)

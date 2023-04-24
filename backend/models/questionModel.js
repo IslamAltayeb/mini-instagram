@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 const moment = require('moment')
-const dateType = new Date().toLocaleString();
-console.log(dateType);
 
 const questionSchema = mongoose.Schema({
 
