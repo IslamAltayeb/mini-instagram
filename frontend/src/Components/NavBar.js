@@ -17,7 +17,7 @@ useEffect(() =>{
         .catch(err =>{
             console.log(err)
         })
-}, [])
+}, [userId])
     return(
         <div className="user flex-column">
             <span className="logo flex-column">

@@ -5,6 +5,7 @@
     white-space: nowrap;
     overflow: auto;
 }
+
 .users-area-title h2{
     display: flex;
     align-self: flex-end;
@@ -19,7 +20,7 @@
     padding: 2px;
     text-align: right;
     background: -webkit-linear-gradient(#af3535, #333);
-    -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 55px;
     line-height: 1;
@@ -33,6 +34,7 @@
     width: 100px;
     height: 100px;
 }
+
 .profile-img-users:hover{
     transform: scale(1.1);
 }
