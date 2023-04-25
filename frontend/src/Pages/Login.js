@@ -62,6 +62,7 @@ export default function Login(){
                 .then(result =>{
                     if (result.data.user){
                         localStorage.setItem("userId", `${result.data.user}`)
+                        Cookie.set('user', result.data.user)
                         navigate(`/homePage`)
                     } else {
                         setErr(result.data.error)
