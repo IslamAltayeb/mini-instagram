@@ -6,6 +6,7 @@
     padding: 100px 10px;
     border-right: 1px solid #d8d8d8;
 }
+
 .user a{
     text-decoration: none;
     color: black;
@@ -18,6 +19,7 @@
     font-size: 35px;
     line-height: 1;
 }
+
 .nav-list:hover{
     cursor: pointer;
     width: 60%;
@@ -27,6 +29,7 @@
     border-radius: 15px;
     border: 1px solid black;
 }
+
 .profile-img-navbar{
     display: flex;
     width: 70px;
